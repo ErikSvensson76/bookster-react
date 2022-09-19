@@ -1,23 +1,8 @@
 import { useReducer } from "react"
 import Form from "../../layout/Form"
 import ContactInfoInput from "./input/contact/ContactInfoInput"
-
-const EMAIL = "email"
-const PHONE = "phone"
-
-const contactInfoReducer = (state, action) => {
-    switch(action.type){
-        case EMAIL:
-            return {
-                ...state, email: action.payload
-            }
-        case PHONE:
-            return {
-                ...state, phone: action.payload
-            }
-        default: return state;
-    }
-}
+import { contactInfoReducer } from "./reducer/reducers"
+import { setEmailAction, setPhoneAction } from "./actions/actions"
 
 const ContactInfoForm = (props) => {
     
@@ -29,16 +14,8 @@ const ContactInfoForm = (props) => {
 
     const [contactInfo, dispatch] = useReducer(contactInfoReducer, initialState);
 
-    const handleEmailChange = (e) => dispatch({
-        type: EMAIL,
-        payload: e.target.value
-    })
-    
-
-    const handlePhoneChange = (e) => dispatch({
-        type: PHONE,
-        payload: e.target.value
-    })
+    const handleEmailChange = (e) => dispatch(setEmailAction(e.target.value))
+    const handlePhoneChange = (e) => dispatch(setPhoneAction(e.target.value))
 
     return (
         <Form>

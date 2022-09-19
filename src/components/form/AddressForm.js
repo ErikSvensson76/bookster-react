@@ -1,39 +1,8 @@
 import { useReducer } from "react"
 import Form from "../../layout/Form"
 import AddressInput from "../form/input/address/AddressInput"
-
-const STREET_ADDRESS = 'streetAddress'
-const ZIP_CODE = 'zipCode'
-const CITY = 'city'
-
-/**
- * 
- * @param {address} state 
- * @param {action{type, payload}} action 
- * @returns 
- */
-const addressReducer = (state, action) => {
-    
-    switch(action.type){
-        case STREET_ADDRESS:
-            return {
-                ...state,
-                street: action.payload  
-            }
-        case ZIP_CODE:
-            return {
-                ...state, 
-                zipCode: action.payload
-            }
-        case CITY:{
-            return {
-                ...state,
-                city: action.payload
-            }
-        }
-        default: return state        
-    }
-}
+import { addressReducer } from "./reducer/reducers"
+import { setStreetAction, setZipCodeAction, setCityAction } from "./actions/actions"
 
 const AddressForm = (props) => {
 
@@ -47,29 +16,11 @@ const AddressForm = (props) => {
     const [address, dispatch] = useReducer(addressReducer, initialState)
 
 
-    const handleStreetChange = (e) => {
-        dispatch({
-            type: STREET_ADDRESS,
-            payload: e.target.value
-        })
-        console.log(address)
-    }
+    const handleStreetChange = (e) => dispatch(setStreetAction(e.target.value))
 
-    const handleZipCodeChance = (e) => {
-        dispatch({
-            type: ZIP_CODE,
-            payload: e.target.value
-        })
-        console.log(address)
-    }
+    const handleZipCodeChance = (e) => dispatch(setZipCodeAction(e.target.value))
 
-    const handleCityChange = (e) => {
-        dispatch({
-            type: CITY,
-            payload: e.target.value
-        })
-        console.log(address)
-    }
+    const handleCityChange = (e) => dispatch(setCityAction(e.target.value))
 
     return(
         <Form>

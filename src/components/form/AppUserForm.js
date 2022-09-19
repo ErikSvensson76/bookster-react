@@ -1,22 +1,12 @@
 import { useReducer } from "react"
 import UserInput from "./input/user/UserInput"
 import Form from "../../layout/Form"
+import { appUserReducer } from "./reducer/reducers"
+import { setUsernameAction, setPasswordAction, setConfirmPasswordAction } from "./actions/actions"
 
-const USERNAME = "username"
-const PASSWORD = "password"
-const CONFIRM = "confirm"
 
-const appUserReducer = (state, action) => {
-    switch(action.type){
-        case USERNAME:
-            return {...state, username: action.payload}
-        case PASSWORD:
-            return {...state, password: action.payload}
-        case CONFIRM:
-            return {...state, confirm: action.payload}
-        default: return state
-    }
-}
+
+
 
 const AppUserForm = (props) => {
 
@@ -29,20 +19,9 @@ const AppUserForm = (props) => {
 
     const [user, dispatch] = useReducer(appUserReducer, initialState);
 
-    const handleUserNameChange = (e) => dispatch({
-        type: USERNAME,
-        payload: e.target.value
-    })
-
-    const handlePasswordChange = (e) => dispatch({
-        type: PASSWORD,
-        payload: e.target.value
-    })
-
-    const handleConfirmChange = (e) => dispatch({
-        type: CONFIRM,
-        payload: e.target.value
-    })
+    const handleUserNameChange = (e) => dispatch(setUsernameAction(e.target.value))
+    const handlePasswordChange = (e) => dispatch(setPasswordAction(e.target.value))
+    const handleConfirmChange = (e) => dispatch(setConfirmPasswordAction(e.target.value))
 
     return(
         <Form>
