@@ -5,23 +5,23 @@ const UserInput = (props) => {
             <h2>Användare:</h2>
             <div>
                 <div>
-                    <input type="hidden" />
+                    <input id="id" type="hidden" value={props.user.id} />
                     <div>
-                        <label>Användarnamn</label>
-                        <input type="text" />
+                        <label htmlFor="username">Användarnamn</label>
+                        <input id="username" type="text" value={props.user.username} onChange={(e) => props.onUsernameChange(e)} />
                     </div>
                     <ul></ul>                                
                 </div>
                 <div>
                     <div>
-                        <label>Lösenord</label>
-                        <input type="password" />
+                        <label htmlFor="password">Lösenord</label>
+                        <input id="password" type="password" value={props.user.password} onChange={(e) => props.onPasswordChange(e)} />
                     </div>
                 </div>
                 <div>
                     <div>
-                        <label>Bekräfta lösenord</label>
-                        <input type="password" />
+                        <label htmlFor="confirm">Bekräfta lösenord</label>
+                        <input id="confirm" type="password" value={props.user.confirm} onChange={(e) => props.onConfirmChange(e)} />
                     </div>
                 </div>                
             </div>

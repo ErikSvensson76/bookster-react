@@ -1,28 +1,29 @@
 
-const AddressInput = (props) => {
+const AddressInput = (props) => {    
+
     return(
         <section>
-            <h2>Adress</h2>
+            <h2>Adress:</h2>
             <div>
-                <input type="hidden" />
+                <input className="id" type="hidden" />
                 <div>
                     <div>
-                        <label>Gatuadress</label>
-                        <input type="text" />
+                        <label htmlFor="street">Gatuadress</label>
+                        <input id="street" type="text" value={props.address.street} onChange={(e) => props.onStreetChange(e)} />
                     </div>
                     <ul></ul>
                 </div>
                 <div>
                     <div>
-                        <label>Postnummer</label>
-                        <input type="text" />
+                        <label htmlFor="zipCode">Postnummer</label>
+                        <input id="zipCode" type="text" value={props.address.zipCode} onChange={(e) => props.onZipCodeChange(e)}/>
                     </div>
                     <ul></ul>
                 </div>
                 <div>
                     <div>
-                        <label>Stad</label>
-                        <input type="text" />
+                        <label htmlFor="city">Stad</label>
+                        <input id="city" type="text" value={props.address.city} onChange={(e) => props.onCityChange(e)} />
                     </div>
                     <ul></ul>
                 </div>               
@@ -30,3 +31,5 @@ const AddressInput = (props) => {
         </section>
     )
 }
+
+export default AddressInput

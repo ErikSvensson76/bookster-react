@@ -5,18 +5,18 @@ const ContactInfoInput = (props) => {
         <section>
             <h2>Kontaktuppgifter:</h2>
             <div>
-                <input type="hidden" />
+                <input id="id" type="hidden" value={props.contactInfo.id} />
                 <div>
                     <div>
-                        <label>Epost</label>
-                        <input type="text"></input>
+                        <label htmlFor="email">Epost</label>
+                        <input id="email" type="text" value={props.contactInfo.email} onChange = {(e) => props.onEmailChange(e)} />
                     </div>
                     <ul></ul>
                 </div>
                 <div>
                     <div>
-                        <label>Telefon</label>
-                        <input type="text"></input>
+                        <label htmlFor="phone">Telefon</label>
+                        <input id="phone" type="text" value={props.contactInfo.phone} onChange = {(e) => props.onPhoneChange(e)} />
                     </div>
                     <ul></ul>
                 </div>
