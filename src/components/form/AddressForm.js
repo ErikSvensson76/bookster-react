@@ -24,13 +24,15 @@ const AddressForm = (props) => {
 
     return(
         <Form>
+            <h2>Adress:</h2>
             <AddressInput 
                 address = {address}
                 onStreetChange = {handleStreetChange}
                 onZipCodeChange = {handleZipCodeChance}
                 onCityChange = {handleCityChange}
             />
-            <button>Submit</button>
+            <button className="button submit">Skicka</button>
+            <button className="button cancel">Avbryt</button>
         </Form>
     )
 }

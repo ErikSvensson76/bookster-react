@@ -1,4 +1,4 @@
 
-const Form = (props) => <form>{props.children}</form>
+const Form = (props) => <form className="form">{props.children}</form>
 
 export default Form;
